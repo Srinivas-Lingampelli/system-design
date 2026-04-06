@@ -4,6 +4,10 @@ import com.example.demo.compositePattern.File;
 import com.example.demo.compositePattern.FileSystem;
 import com.example.demo.compositePattern.FileSystemItem;
 import com.example.demo.compositePattern.Folder;
+import com.example.demo.decorator.Coffee;
+import com.example.demo.decorator.MilkDecorator;
+import com.example.demo.decorator.PlainCoffee;
+import com.example.demo.decorator.SugarDecorator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -66,6 +70,23 @@ public class DemoApplication {
         documents.add(archive);
         fs.displaySize(documents); // size auto-updates — recursion handles it
         fs.displayTree();
+
+
+
+        // Plain Coffee
+        Coffee coffee = new PlainCoffee();
+        System.out.println("Description: " + coffee.getDescription());
+        System.out.println("Cost: $" + coffee.getPrice());
+
+        // Coffee with Milk
+        Coffee milkCoffee = new MilkDecorator(new PlainCoffee());
+        System.out.println("\nDescription: " + milkCoffee.getDescription());
+        System.out.println("Cost: $" + milkCoffee.getPrice());
+
+        // Coffee with Sugar and Milk
+        Coffee sugarMilkCoffee = new SugarDecorator(new MilkDecorator(new PlainCoffee()));
+        System.out.println("\nDescription: " + sugarMilkCoffee.getDescription());
+        System.out.println("Cost: $" + sugarMilkCoffee.getPrice());
     }
 
 
