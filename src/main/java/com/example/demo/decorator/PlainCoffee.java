@@ -10,4 +10,8 @@ public class PlainCoffee implements Coffee {
     public double getPrice() {
         return 2.0;
     }
+
+    public void onCoffee() {
+        System.out.println("Coffee");
+    }
 }
